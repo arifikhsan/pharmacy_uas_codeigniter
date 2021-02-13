@@ -9,4 +9,9 @@ class Home extends BaseController
 		// return view('welcome_message');
 		return view('admin/index');
 	}
+
+  public function blank()
+	{
+		return view('admin/blank');
+	}
 }
