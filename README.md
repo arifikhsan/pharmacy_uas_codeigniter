@@ -19,7 +19,7 @@ composer update
 ```
 
 2. Salin file `development.env` menjadi `.env`.
-3. Buat database mysql dengan nama `pharmacy_codeigniter_development`.
+3. Buat database mysql dengan nama `codeigniter_pharmacy`.
 4. Jika username dan password database bukan `root` dan `""` (kosong), sesuaikan pengaturan di `app/config/Database.php`.
 
 ## Cara menjalankan
