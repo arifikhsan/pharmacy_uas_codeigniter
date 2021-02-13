@@ -6,7 +6,7 @@ use CodeIgniter\Database\Migration;
 
 class CreateSuppliers extends Migration
 {
-	public function up()
+  public function up()
   {
     $this->forge->addField([
       'id'          => [
@@ -27,8 +27,8 @@ class CreateSuppliers extends Migration
         'constraint' => '100',
       ],
       'phone_number'     => [
-        'type'           => 'INT',
-        'constraint'     => '15',
+        'type'       => 'VARCHAR',
+        'constraint' => '100',
       ],
       'created_at datetime default current_timestamp',
       'updated_at datetime default current_timestamp on update current_timestamp',
