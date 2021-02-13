@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class TransactionDetail extends Model
 {
 	protected $DBGroup              = 'default';
-	protected $table                = 'transactiondetails';
+	protected $table                = 'transaction_details';
 	protected $primaryKey           = 'id';
 	protected $useAutoIncrement     = true;
 	protected $insertID             = 0;
