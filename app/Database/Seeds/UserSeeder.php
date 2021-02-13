@@ -8,7 +8,7 @@ class UserSeeder extends Seeder
 {
   public function run()
   {
-    $user = model('UserModel');
+    $user = model('User');
 
     $user->insert([
       'username' => 'admin',
