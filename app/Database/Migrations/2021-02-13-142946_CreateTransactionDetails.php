@@ -25,7 +25,7 @@ class CreateDetailTransactions extends Migration
         'unsigned'       => true,
         'constraint'     => '11',
       ],
-      'subtotal'          => [
+      'sub_total'        => [
         'type'           => 'INT',
         'unsigned'       => true,
         'constraint'     => '11',
