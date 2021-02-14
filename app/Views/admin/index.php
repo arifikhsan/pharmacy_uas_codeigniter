@@ -13,7 +13,7 @@
   <!-- Content Row -->
   <div class="row">
 
-    <div class="mb-4 col-xl-3 col-md-6">
+    <a href="<?= base_url() ?>/drugs" class="mb-4 col-xl-3 col-md-6">
       <div class="py-2 shadow card border-left-primary h-100">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
@@ -27,7 +27,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </a>
 
     <div class="mb-4 col-xl-3 col-md-6">
       <div class="py-2 shadow card border-left-success h-100">
