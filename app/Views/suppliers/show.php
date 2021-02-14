@@ -35,7 +35,7 @@
         <p><?= date("l, M d, Y | H:i:s", strtotime($supplier->updated_at)) ?></p>
       </div>
       <a href="/suppliers" class="mt-4 btn btn-secondary">Back</a>
-      <a href="/suppliers/edit/<?= $supplier->id ?>" class="mt-4 btn btn-info">Submit</a>
+      <a href="/suppliers/edit/<?= $supplier->id ?>" class="mt-4 btn btn-info">Edit</a>
       <a href="/suppliers/delete/<?= $supplier->id ?>" class="mt-4 btn btn-danger">Delete</a>
     </div>
   </div>
