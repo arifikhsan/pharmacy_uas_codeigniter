@@ -33,10 +33,11 @@ class Drugs extends BaseController
       'producer' => 'trim|required',
       'price' => 'numeric|trim|required',
       'quantity' => 'numeric|trim|required',
-      'drug_image' => 'required'
+      'drug_image' => 'uploaded[drug_image]|max_size[drug_image,8512]|is_image[drug_image]|mime_in[drug_image,image/jpg,image/jpeg,image/png]',
     ])) {
-      $validation = Services::validation();
-      return redirect()->to('/drugs/add')->withInput('validation', $validation);
+      // $validation = Services::validation();
+      // return redirect()->to('/drugs/add')->withInput('validation', $validation);
+      return redirect()->to('/drugs/add')->withInput();
     };
 
     $supplier_id = intval($this->request->getPost('supplier_id'));
@@ -46,7 +47,7 @@ class Drugs extends BaseController
     $quantity = intval($this->request->getPost('quantity'));
     $image = $this->request->getFile('drug_image');
 
-    dd($this->request->getFiles());
+    // dd($image);
 
     if ($image->isValid() && !$image->hasMoved()) {
 
@@ -59,7 +60,7 @@ class Drugs extends BaseController
         'image' => $image->getName(),
       ]);
 
-      $image->move(ROOTPATH . 'public/uploads');
+      $image->move('uploads');
     }
 
     if ($result) {
@@ -75,6 +76,7 @@ class Drugs extends BaseController
   {
     $suppliers = $this->supplier->asObject()->findAll();
     $drug = $this->drug->asObject()->find(intval($id));
+    // dd($drug);
     return view('drugs/edit', ['drug' => $drug, 'suppliers' => $suppliers, 'validation' => Services::validation()]);
   }
 
@@ -96,7 +98,7 @@ class Drugs extends BaseController
     $producer = $this->request->getPost('producer');
     $price = intval($this->request->getPost('price'));
     $quantity = intval($this->request->getPost('quantity'));
-    $image = 1;
+    // $image = $this->request->getFile('image');
 
     $newDrug = [
       'supplier_id' => $supplier_id,
@@ -104,10 +106,24 @@ class Drugs extends BaseController
       'producer' => $producer,
       'price' => $price,
       'quantity' => $quantity,
+      // 'image' => $image->getName(),
     ];
 
 
-    if ($this->drug->update(intval($id), $newDrug)) {
+    if (!empty($_FILES["image"]["name"])) {
+      $image = $this->request->getFile('image');
+      $newDrug['image'] = $image->getName();
+      $oldDrug = $this->drug->asObject()->find($id);
+      if ($oldDrug->image) {
+        unlink('uploads/' . $oldDrug->image);
+      }
+      $result = $this->drug->update(intval($id), $newDrug);
+      $image->move('uploads');
+    } else {
+      $result = $this->drug->update(intval($id), $newDrug);
+    }
+
+    if ($result) {
       session()->setFlashdata('message', 'Drug updated successfully!');
     } else {
       session()->setFlashdata('message', 'Update drug failed!');
@@ -124,6 +140,8 @@ class Drugs extends BaseController
 
   function destroy($id)
   {
+    $drug = $this->drug->asObject()->find(intval($id));
+    unlink('uploads/' . $drug->image);
     $this->drug->delete(intval($id));
     return redirect()->to('/drugs');
   }

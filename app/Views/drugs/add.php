@@ -25,7 +25,7 @@
       </div>
       <div class="form-group">
         <label class="form-label">Name</label>
-        <input value="<?= old('name') ?>" type="text" name="name" class="form-control <?= $validation->hasError('name') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('name') ?>" type="text" name="name" class="form-control <?= $validation->hasError('name') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('name')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('name') ?>
@@ -34,7 +34,7 @@
       </div>
       <div class="form-group">
         <label class="form-label">Producer</label>
-        <input value="<?= old('producer') ?>" type="text" name="producer" class="form-control <?= $validation->hasError('producer') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('producer') ?>" type="text" name="producer" class="form-control <?= $validation->hasError('producer') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('producer')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('producer') ?>
@@ -43,7 +43,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Price</label>
-        <input value="<?= old('price') ?>" type="number" name="price" class="form-control <?= $validation->hasError('price') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('price') ?>" type="number" name="price" class="form-control <?= $validation->hasError('price') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('price')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('price') ?>
@@ -52,16 +52,20 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Quantity</label>
-        <input value="<?= old('quantity') ?>" type="number" name="quantity" class="form-control <?= $validation->hasError('quantity') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('quantity') ?>" type="number" name="quantity" class="form-control <?= $validation->hasError('quantity') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('quantity')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('quantity') ?>
           </div>
         <?php endif ?>
       </div>
-      <div class="mt-3 form-group">
+      <div class="mt-3 custom-file form-group">
         <label class="form-label">Image</label>
-        <input value="<?= old('drug_image') ?>" type="file" name="drug_image" class="form-control <?= $validation->hasError('drug_image') ? 'is-invalid' : '' ?>" required>
+        <input name="drug_image" value="<?= old('drug_image') ?>" type="file" class="custom-file-input <?= $validation->hasError('drug_image') ? 'is-invalid' : '' ?>" id="image">
+        <?php if ($drug->drug_image) : ?>
+          <img style="width: 200px; object-fit: contain;" src="<?= base_url() ?>/uploads/<?= $drug->drug_image ?>" alt="<?= $drug->drug_image ?>">
+        <?php endif; ?>
+        <label class="custom-file-label" for="image">Choose drug image...</label>
         <?php if ($validation->hasError('drug_image')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('drug_image') ?>

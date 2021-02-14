@@ -24,6 +24,7 @@
       <thead>
         <tr>
           <th scope="col">No.</th>
+          <th scope="col">Image</th>
           <th scope="col">Name</th>
           <th scope="col">Price</th>
           <th scope="col">Producer</th>
@@ -37,6 +38,11 @@
         foreach ($drugs as $i => $drug) : ?>
           <tr>
             <th scope="row"><?= $i + 1 ?></th>
+            <td>
+              <?php if ($drug->drug_image) : ?>
+                <img style="width: 50px; object-fit: contain;" src="<?= base_url() ?>/uploads/<?= $drug->drug_image ?>" alt="<?= $drug->drug_image ?>">
+              <?php endif; ?>
+            </td>
             <td><?= $drug->drug_name ?></td>
             <td><?= number_format($drug->drug_price) ?></td>
             <td><?= $drug->drug_producer ?></td>

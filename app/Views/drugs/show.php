@@ -35,6 +35,11 @@
         <p><?= $drug->drug_quantity ?></p>
       </div>
       <div class="mt-3">
+        <label class="font-weight-bold">Image</label>
+        <p><?= $drug->drug_image ?></p>
+        <img style="width: 200px; object-fit: contain;" src="<?= base_url() ?>/uploads/<?= $drug->drug_image ?>" alt="<?= $drug->drug_image ?>">
+      </div>
+      <div class="mt-3">
         <label class="font-weight-bold">Created At</label>
         <p><?= date("l, M d, Y | H:i:s", strtotime($drug->drug_created_at)) ?></p>
       </div>

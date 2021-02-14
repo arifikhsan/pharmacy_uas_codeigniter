@@ -8,7 +8,7 @@
     </h1>
   </div>
   <div class="my-4 col-md-6">
-    <form action="<?= '/drugs/update/' . $drug->id ?>" method="post">
+    <form enctype="multipart/form-data" action="<?= '/drugs/update/' . $drug->id ?>" method="post">
       <?= csrf_field() ?>
       <div class="form-group">
         <label class="form-label">Supplier</label>
@@ -58,6 +58,21 @@
             <?= $validation->getError('quantity') ?>
           </div>
         <?php endif ?>
+      </div>
+      <div class="mt-3 form-group">
+        <p>Image</p>
+        <?php if ($drug->image) : ?>
+          <img class="" style="width: 200px; object-fit: contain;" src="<?= base_url() ?>/uploads/<?= $drug->image ?>" alt="<?= $drug->image ?>">
+        <?php endif; ?>
+        <div class="mt-3 custom-file">
+          <input name="image" type="file" class="custom-file-input <?= $validation->hasError('image') ? 'is-invalid' : '' ?>" id="image">
+          <label class="custom-file-label" for="image">Choose drug image...</label>
+          <?php if ($validation->hasError('image')) : ?>
+            <div class="invalid-feedback">
+              <?= $validation->getError('image') ?>
+            </div>
+          <?php endif ?>
+        </div>
       </div>
       <a href="/drugs" class="mt-4 btn btn-secondary">Back</a>
       <button type="submit" class="mt-4 btn btn-primary">Update</button>

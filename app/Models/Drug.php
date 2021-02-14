@@ -45,6 +45,7 @@ class Drug extends Model
     $this->select('drugs.id, drugs.price as drug_price, drugs.quantity as drug_quantity, drugs.producer as drug_producer');
     $this->select('drugs.id as drug_id');
     $this->select('drugs.name as drug_name');
+    $this->select('drugs.image as drug_image');
     $this->select('suppliers.id as supplier_id');
     $this->select('suppliers.name as supplier_name');
     $this->join('suppliers', 'suppliers.id = drugs.supplier_id');
@@ -55,6 +56,7 @@ class Drug extends Model
     $this->select('drugs.id, drugs.price as drug_price, drugs.quantity as drug_quantity, drugs.producer as drug_producer');
     $this->select('drugs.id as drug_id');
     $this->select('drugs.name as drug_name');
+    $this->select('drugs.image as drug_image');
     $this->select('drugs.created_at as drug_created_at');
     $this->select('drugs.updated_at as drug_updated_at');
     $this->select('suppliers.id as supplier_id');
