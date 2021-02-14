@@ -12,7 +12,7 @@
     <h1>
       Drugs
     </h1>
-    <a class="mt-2 btn btn-sm btn-secondary" href="/">
+    <a class="mt-2 btn btn-sm btn-secondary" href="/admin">
       Back
     </a>
     <a class="mt-2 text-white btn btn-sm btn-info" href="/drugs/add">

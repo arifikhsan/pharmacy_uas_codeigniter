@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Models\Drug;
 use App\Models\Supplier;
+use App\Models\Transaction;
+use App\Models\TransactionDetail;
 use App\Models\User;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
@@ -53,5 +55,7 @@ class BaseController extends Controller
     $this->user = new User();
     $this->supplier = new Supplier();
     $this->drug = new Drug();
+    $this->transaction = new Transaction();
+    $this->transactionDetail = new TransactionDetail();
 	}
 }

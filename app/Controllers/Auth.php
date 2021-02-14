@@ -19,6 +19,7 @@ class Auth extends BaseController
       'password' => 'min_length[4]|trim|required'
     ])) {
       $validation = Services::validation();
+      session()->setFlashdata('error', 'Auth failed!');
       return redirect()->to('/auth/login')->withInput('validation', $validation);
     };
 
@@ -29,8 +30,10 @@ class Auth extends BaseController
     $user = $this->user->asObject()->where(['username' => $username, 'password' => md5($password)])->first();
 
     if ($user) {
+      session()->setFlashdata('message', 'Auth success!');
       return redirect()->to('/admin');
     } else {
+      session()->setFlashdata('error', 'Auth failed!');
       return redirect()->to('/auth/login');
     }
   }

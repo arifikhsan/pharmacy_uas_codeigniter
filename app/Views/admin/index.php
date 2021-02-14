@@ -10,6 +10,13 @@
     <a href="#" class="shadow-sm d-none d-sm-inline-block btn btn-sm btn-primary"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
   </div>
 
+  <?php if (session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <?= session()->getFlashdata('message'); ?>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  <?php endif; ?>
+
   <div class="row">
     <a href="/drugs" class="mb-4 col-xl-3 col-md-6">
       <div class="py-2 shadow card border-left-primary h-100">
@@ -17,7 +24,7 @@
           <div class="row no-gutters align-items-center">
             <div class="mr-2 col">
               <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Drugs</div>
-              <div class="mb-0 text-gray-800 h5 font-weight-bold">1000</div>
+              <div class="mb-0 text-gray-800 h5 font-weight-bold"><?= $drugCount ?></div>
             </div>
             <div class="col-auto">
               <i class="text-gray-300 fas fa-capsules fa-2x"></i>
@@ -33,7 +40,7 @@
           <div class="row no-gutters align-items-center">
             <div class="mr-2 col">
               <div class="mb-1 text-xs font-weight-bold text-success text-uppercase">Suppliers</div>
-              <div class="mb-0 text-gray-800 h5 font-weight-bold">1000</div>
+              <div class="mb-0 text-gray-800 h5 font-weight-bold"><?= $supplierCount ?></div>
             </div>
             <div class="col-auto">
               <i class="text-gray-300 fas fa-truck fa-2x"></i>
@@ -43,13 +50,13 @@
       </div>
     </a>
 
-    <div class="mb-4 col-xl-3 col-md-6">
+    <a href="/transactions" class="mb-4 col-xl-3 col-md-6">
       <div class="py-2 shadow card border-left-info h-100">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="mr-2 col">
               <div class="mb-1 text-xs font-weight-bold text-info text-uppercase">Transaction</div>
-              <div class="mb-0 text-gray-800 h5 font-weight-bold">1000</div>
+              <div class="mb-0 text-gray-800 h5 font-weight-bold"><?= $transactionCount ?></div>
             </div>
             <div class="col-auto">
               <i class="text-gray-300 fas fa-file-invoice-dollar fa-2x"></i>
@@ -57,16 +64,15 @@
           </div>
         </div>
       </div>
-    </div>
+    </a>
 
-    <div class="mb-4 col-xl-3 col-md-6">
+    <a href="/transaction-details" class="mb-4 col-xl-3 col-md-6">
       <div class="py-2 shadow card border-left-warning h-100">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
             <div class="mr-2 col">
-              <div class="mb-1 text-xs font-weight-bold text-warning text-uppercase">
-                Transaction Detail</div>
-              <div class="mb-0 text-gray-800 h5 font-weight-bold">1800</div>
+              <div class="mb-1 text-xs font-weight-bold text-warning text-uppercase">Transaction Detail</div>
+              <div class="mb-0 text-gray-800 h5 font-weight-bold"><?= $transactionDetailCount ?></div>
             </div>
             <div class="col-auto">
               <i class="text-gray-300 fas fa-file-invoice fa-2x"></i>
@@ -74,7 +80,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
 
   <div class="row">
@@ -84,7 +90,7 @@
           <div class="row no-gutters align-items-center">
             <div class="mr-2 col">
               <div class="mb-1 text-xs font-weight-bold text-primary text-uppercase">Users</div>
-              <div class="mb-0 text-gray-800 h5 font-weight-bold">1000</div>
+              <div class="mb-0 text-gray-800 h5 font-weight-bold"><?= $userCount ?></div>
             </div>
             <div class="col-auto">
               <i class="text-gray-300 fas fa-user-astronaut fa-2x"></i>

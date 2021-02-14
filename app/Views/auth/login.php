@@ -16,9 +16,15 @@
               <div class="text-center">
                 <h1 class="mb-4 text-gray-900 h4">Login</h1>
               </div>
+              <?php if (session()->getFlashdata('error')) : ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <?= session()->getFlashdata('error'); ?>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+              <?php endif; ?>
               <form action="/auth/create" class="user" method="post">
                 <div class="form-group">
-                  <input value="<?= old('username') ?>" name="username" type="text" class="form-control form-control-user <?= $validation->hasError('username') ? 'is-invalid' : '' ?>" aria-describedby="usernameHelp" placeholder="Enter username..." autofocus/>
+                  <input value="<?= old('username') ?>" name="username" type="text" class="form-control form-control-user <?= $validation->hasError('username') ? 'is-invalid' : '' ?>" aria-describedby="usernameHelp" placeholder="Enter username..." autofocus />
                   <?php if ($validation->hasError('username')) : ?>
                     <div class="invalid-feedback">
                       <?= $validation->getError('username') ?>
