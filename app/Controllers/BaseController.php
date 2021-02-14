@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 
+use App\Models\Supplier;
+use App\Models\User;
 use CodeIgniter\Controller;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
@@ -45,5 +47,8 @@ class BaseController extends Controller
 		// Preload any models, libraries, etc, here.
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
+    session();
+    $this->user = new User();
+    $this->supplier = new Supplier();
 	}
 }

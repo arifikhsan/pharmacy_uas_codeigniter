@@ -14,14 +14,24 @@
           <div class="col-lg-6">
             <div class="" style="padding: 10rem 3rem 10rem 3rem">
               <div class="text-center">
-                <h1 class="mb-4 text-gray-900 h4">Welcome Back!</h1>
+                <h1 class="mb-4 text-gray-900 h4">Login</h1>
               </div>
               <form action="/auth/create" class="user" method="post">
                 <div class="form-group">
-                  <input value="admin" name="username" type="text" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Enter Email Address...">
+                  <input value="<?= old('username') ?>" name="username" type="text" class="form-control form-control-user <?= $validation->hasError('username') ? 'is-invalid' : '' ?>" aria-describedby="usernameHelp" placeholder="Enter username..." autofocus/>
+                  <?php if ($validation->hasError('username')) : ?>
+                    <div class="invalid-feedback">
+                      <?= $validation->getError('username') ?>
+                    </div>
+                  <?php endif ?>
                 </div>
                 <div class="form-group">
-                  <input value="admin123*()" name="password" type="password" class="form-control form-control-user" placeholder="Password">
+                  <input value="<?= old('password') ?>" name="password" type="password" class="form-control form-control-user <?= $validation->hasError('password') ? 'is-invalid' : '' ?>" placeholder="Password">
+                  <?php if ($validation->hasError('password')) : ?>
+                    <div class="invalid-feedback">
+                      <?= $validation->getError('password') ?>
+                    </div>
+                  <?php endif ?>
                 </div>
                 <button type="submit" class="btn btn-primary btn-user btn-block">
                   Login

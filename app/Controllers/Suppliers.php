@@ -3,22 +3,19 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use App\Models\Supplier;
 
 class Suppliers extends BaseController
 {
   public function index()
   {
-    $supplier = new Supplier();
-    $suppliers = $supplier->asObject()->findAll();
+    $suppliers = $this->supplier->asObject()->findAll();
 
     return view('suppliers/index', ['suppliers' => $suppliers]);
   }
 
   public function show($id)
   {
-    $supplier = new Supplier();
-    $supplier = $supplier->asObject()->find($id);
+    $supplier = $this->supplier->asObject()->find($id);
 
     return view('suppliers/show', ['supplier' => $supplier]);
   }
@@ -35,8 +32,7 @@ class Suppliers extends BaseController
     $city = $this->request->getPost('city');
     $phoneNumber = $this->request->getPost('phone_number');
 
-    $supplier = new Supplier();
-    $supplier->insert([
+    $this->supplier->insert([
       'name' => $name,
       'address' => $address,
       'city' => $city,
@@ -49,8 +45,7 @@ class Suppliers extends BaseController
 
   function edit($id)
   {
-    $supplier = new Supplier();
-    $supplier = $supplier->asObject()->find(intval($id));
+    $supplier = $this->supplier->asObject()->find(intval($id));
 
     return view('suppliers/edit', ['supplier' => $supplier]);
   }
@@ -64,19 +59,23 @@ class Suppliers extends BaseController
       'phone_number' => $this->request->getPost('phone_umber'),
     ];
 
-    $supplier = new Supplier();
-    $supplier = $supplier->update(intval($id), $newSupplier);
+    if ($this->supplier->update(intval($id), $newSupplier)) {
+      session()->setFlashdata('message', 'Supplier updated successfully!');
+    } else {
+      session()->setFlashdata('message', 'Update supplier failed!');
+    }
 
-    session()->setFlashdata('message', 'Supplier updated successfully!');
     return redirect()->to('/suppliers');
   }
 
   function delete($id)
   {
-    $supplier = new Supplier();
-    $supplier->delete(intval($id));
+    if ($this->supplier->delete(intval($id))) {
+      session()->setFlashdata('message', 'Supplier deleted successfully!');
+    } else {
+      session()->setFlashdata('message', 'Delete supplier failed!');
+    }
 
-    session()->setFlashdata('message', 'Supplier deleted successfully!');
     return redirect()->to('/suppliers');
   }
 }
