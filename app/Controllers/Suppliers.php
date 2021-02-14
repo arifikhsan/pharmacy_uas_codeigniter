@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use Config\Services;
 
 class Suppliers extends BaseController
 {
@@ -22,36 +23,60 @@ class Suppliers extends BaseController
 
   function add()
   {
-    return view('suppliers/add');
+    return view('suppliers/add', ['validation' => Services::validation()]);
   }
 
   function insert()
   {
+    if (!$this->validate([
+      'name' => 'trim|required',
+      'city' => 'trim|required',
+      'address' => 'trim|required',
+      'phone_number' => 'min_length[4]|trim|required',
+    ])) {
+      $validation = Services::validation();
+      return redirect()->to('/suppliers/add')->withInput('validation', $validation);
+    };
+
     $name = $this->request->getPost('name');
     $address = $this->request->getPost('address');
     $city = $this->request->getPost('city');
     $phoneNumber = $this->request->getPost('phone_number');
 
-    $this->supplier->insert([
+    $result = $this->supplier->insert([
       'name' => $name,
       'address' => $address,
       'city' => $city,
       'phone_number' => $phoneNumber,
     ]);
 
-    session()->setFlashdata('message', 'Supplier created successfully!');
+    if ($result) {
+      session()->setFlashdata('message', 'Supplier created successfully!');
+    } else {
+      session()->setFlashdata('message', 'Create supplier failed!');
+    }
+
     return redirect()->to('/suppliers');
   }
 
   function edit($id)
   {
     $supplier = $this->supplier->asObject()->find(intval($id));
-
-    return view('suppliers/edit', ['supplier' => $supplier]);
+    return view('suppliers/edit', ['supplier' => $supplier, 'validation' => Services::validation()]);
   }
 
   function update($id)
   {
+    if (!$this->validate([
+      'name' => 'trim|required',
+      'city' => 'trim|required',
+      'address' => 'trim|required',
+      'phone_number' => 'min_length[4]|trim|required',
+    ])) {
+      $validation = Services::validation();
+      return redirect()->to('/suppliers/edit/' . $id)->withInput('validation', $validation);
+    };
+
     $newSupplier = [
       'name' => $this->request->getPost('name'),
       'address' => $this->request->getPost('address'),
