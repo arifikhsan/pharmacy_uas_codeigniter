@@ -4,7 +4,7 @@
 <div class="container mt-4">
   <div>
     <h1>
-      Supplierss
+      Suppliers
     </h1>
     <a class="mt-2 btn btn-sm btn-secondary" href="/">
       Back
