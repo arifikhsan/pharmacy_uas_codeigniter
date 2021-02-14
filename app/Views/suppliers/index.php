@@ -2,6 +2,12 @@
 
 <?= $this->section('content') ?>
 <div class="container mt-4">
+  <?php if (session()->getFlashdata('message')) : ?>
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <?= session()->getFlashdata('message'); ?>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    </div>
+  <?php endif; ?>
   <div>
     <h1>
       Suppliers

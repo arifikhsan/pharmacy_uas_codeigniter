@@ -43,6 +43,7 @@ class Suppliers extends BaseController
       'phone_number' => $phoneNumber,
     ]);
 
+    session()->setFlashdata('message', 'Supplier created successfully!');
     return redirect()->to('/suppliers');
   }
 
@@ -66,6 +67,7 @@ class Suppliers extends BaseController
     $supplier = new Supplier();
     $supplier = $supplier->update(intval($id), $newSupplier);
 
+    session()->setFlashdata('message', 'Supplier updated successfully!');
     return redirect()->to('/suppliers');
   }
 
@@ -74,6 +76,7 @@ class Suppliers extends BaseController
     $supplier = new Supplier();
     $supplier->delete(intval($id));
 
+    session()->setFlashdata('message', 'Supplier deleted successfully!');
     return redirect()->to('/suppliers');
   }
 }
