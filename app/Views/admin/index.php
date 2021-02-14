@@ -20,7 +20,7 @@
               <div class="mb-0 text-gray-800 h5 font-weight-bold">1000</div>
             </div>
             <div class="col-auto">
-              <i class="text-gray-300 fas fa-calendar fa-2x"></i>
+              <i class="text-gray-300 fas fa-capsules fa-2x"></i>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
               <div class="mb-0 text-gray-800 h5 font-weight-bold">1000</div>
             </div>
             <div class="col-auto">
-              <i class="text-gray-300 fas fa-dollar-sign fa-2x"></i>
+              <i class="text-gray-300 fas fa-truck fa-2x"></i>
             </div>
           </div>
         </div>
@@ -52,7 +52,7 @@
               <div class="mb-0 text-gray-800 h5 font-weight-bold">1000</div>
             </div>
             <div class="col-auto">
-              <i class="text-gray-300 fas fa-clipboard-list fa-2x"></i>
+              <i class="text-gray-300 fas fa-file-invoice-dollar fa-2x"></i>
             </div>
           </div>
         </div>
@@ -69,7 +69,7 @@
               <div class="mb-0 text-gray-800 h5 font-weight-bold">1800</div>
             </div>
             <div class="col-auto">
-              <i class="text-gray-300 fas fa-comments fa-2x"></i>
+              <i class="text-gray-300 fas fa-file-invoice fa-2x"></i>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@
               <div class="mb-0 text-gray-800 h5 font-weight-bold">1000</div>
             </div>
             <div class="col-auto">
-              <i class="text-gray-300 fas fa-calendar fa-2x"></i>
+              <i class="text-gray-300 fas fa-user-astronaut fa-2x"></i>
             </div>
           </div>
         </div>

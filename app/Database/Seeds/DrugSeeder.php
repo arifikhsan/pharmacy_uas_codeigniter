@@ -14,6 +14,7 @@ class DrugSeeder extends Seeder
       $drug->insert([
         'supplier_id' => static::faker()->numberBetween(1, 3),
         'name' => static::faker()->word,
+        'producer' => static::faker()->company,
         'price' => static::faker()->numberBetween(1, 10) * 1000,
         'quantity' => static::faker()->numberBetween(1, 10) * 100,
       ]);

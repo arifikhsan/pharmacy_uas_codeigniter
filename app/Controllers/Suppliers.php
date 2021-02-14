@@ -10,14 +10,12 @@ class Suppliers extends BaseController
   public function index()
   {
     $suppliers = $this->supplier->asObject()->findAll();
-
     return view('suppliers/index', ['suppliers' => $suppliers]);
   }
 
   public function show($id)
   {
     $supplier = $this->supplier->asObject()->find($id);
-
     return view('suppliers/show', ['supplier' => $supplier]);
   }
 

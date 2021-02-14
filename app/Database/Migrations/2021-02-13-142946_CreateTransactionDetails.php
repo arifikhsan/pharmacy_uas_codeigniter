@@ -39,8 +39,8 @@ class CreateDetailTransactions extends Migration
       'updated_at datetime default current_timestamp on update current_timestamp',
     ]);
     $this->forge->addKey('id', true);
-    $this->forge->addForeignKey('transaction_id', 'transactions', 'id');
-    $this->forge->addForeignKey('drug_id', 'drugs', 'id');
+    $this->forge->addForeignKey('transaction_id', 'transactions', 'id', 'CASCADE', 'CASCADE');
+    $this->forge->addForeignKey('drug_id', 'drugs', 'id', 'CASCADE', 'CASCADE');
     $this->forge->createTable('transaction_details');
   }
 

@@ -46,7 +46,7 @@ class CreateDrugs extends Migration
       'updated_at datetime default current_timestamp on update current_timestamp',
     ]);
     $this->forge->addKey('id', true);
-    $this->forge->addForeignKey('supplier_id', 'suppliers', 'id');
+    $this->forge->addForeignKey('supplier_id', 'suppliers', 'id', 'CASCADE', 'CASCADE');
     $this->forge->createTable('drugs');
   }
 

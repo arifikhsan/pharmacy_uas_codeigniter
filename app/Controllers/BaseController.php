@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Drug;
 use App\Models\Supplier;
 use App\Models\User;
 use CodeIgniter\Controller;
@@ -48,7 +49,9 @@ class BaseController extends Controller
 		//--------------------------------------------------------------------
 		// E.g.: $this->session = \Config\Services::session();
     session();
+
     $this->user = new User();
     $this->supplier = new Supplier();
+    $this->drug = new Drug();
 	}
 }
