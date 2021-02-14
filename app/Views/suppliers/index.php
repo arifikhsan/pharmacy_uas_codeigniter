@@ -20,7 +20,7 @@
           <th scope="col">No.</th>
           <th scope="col">Name</th>
           <th scope="col">City</th>
-          <th scope="col" class="d-none d-lg-block">Address</th>
+          <th scope="col" class="d-none d-lg-block">Phone Number</th>
           <th scope="col">Action</th>
         </tr>
       </thead>
@@ -31,7 +31,7 @@
             <th scope="row"><?= $i + 1 ?></th>
             <td><?= $supplier->name ?></td>
             <td><?= $supplier->city ?></td>
-            <td class="d-none d-lg-block"><?= $supplier->address ?></td>
+            <td class="d-none d-lg-block"><?= $supplier->phone_number ?></td>
             <td>
               <a class="text-white btn btn-sm btn-success" href="<?= '/suppliers/show/' . $supplier->id ?>">
                 Show

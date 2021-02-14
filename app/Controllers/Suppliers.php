@@ -32,9 +32,16 @@ class Suppliers extends BaseController
   {
     $name = $this->request->getPost('name');
     $address = $this->request->getPost('address');
+    $city = $this->request->getPost('city');
+    $phoneNumber = $this->request->getPost('phone_number');
 
     $supplier = new Supplier();
-    $supplier->insert(['name' => $name, 'address' => $address]);
+    $supplier->insert([
+      'name' => $name,
+      'address' => $address,
+      'city' => $city,
+      'phone_number' => $phoneNumber,
+    ]);
 
     return redirect()->to('/suppliers');
   }
@@ -44,7 +51,7 @@ class Suppliers extends BaseController
     $supplier = new Supplier();
     $supplier = $supplier->asObject()->find(intval($id));
 
-    return view('suppliers/edit', ['drug' => $supplier]);
+    return view('suppliers/edit', ['supplier' => $supplier]);
   }
 
   function update($id)
@@ -52,6 +59,8 @@ class Suppliers extends BaseController
     $newSupplier = [
       'name' => $this->request->getPost('name'),
       'address' => $this->request->getPost('address'),
+      'city' => $this->request->getPost('city'),
+      'phone_number' => $this->request->getPost('phone_umber'),
     ];
 
     $supplier = new Supplier();

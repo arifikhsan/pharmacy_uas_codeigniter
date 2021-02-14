@@ -7,20 +7,27 @@
       Add New Supplier
     </h1>
   </div>
-  <hr><br>
-  <div class="col-md-6 offset-md-3">
+  <div class="my-4 col-md-6">
     <form action="/suppliers/insert" method="post">
       <?= csrf_field() ?>
       <div class="form-group">
         <label class="form-label">Name</label>
-        <input type="text" name="name" class="form-control" required />
+        <input name="name" class="form-control" required />
       </div>
-      <div class="form-group mt-3">
+      <div class="mt-3 form-group">
+        <label class="form-label">City</label>
+        <input name="city" class="form-control" required />
+      </div>
+      <div class="mt-3 form-group">
         <label class="form-label">Address</label>
         <textarea name="address" class="form-control" required></textarea>
       </div>
-      <a href="/suppliers" class="btn mt-4 btn-secondary">Back</a>
-      <button type="submit" class="btn mt-4 btn-primary">Submit</button>
+      <div class="mt-3 form-group">
+        <label class="form-label">Phone Number</label>
+        <input name="phone_number" class="form-control" required />
+      </div>
+      <a href="/suppliers" class="mt-4 btn btn-secondary">Back</a>
+      <button type="submit" class="mt-4 btn btn-primary">Submit</button>
     </form>
   </div>
 </div>
