@@ -12,7 +12,7 @@ class UserSeeder extends Seeder
 
     $user->insert([
       'username' => 'admin',
-      'password' => md5('admin'),
+      'password' => md5('admin123*()'),
     ]);
   }
 }
