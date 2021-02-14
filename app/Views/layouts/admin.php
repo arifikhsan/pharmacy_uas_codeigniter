@@ -68,16 +68,33 @@
           <span>Suppliers</span>
         </a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="/transactions">
           <i class="fas fa-fw fa-file-invoice-dollar"></i>
-          <span>Transaction</span>
+          <span>Transactions</span>
         </a>
       </li>
+
       <li class="nav-item">
         <a class="nav-link" href="/transaction-details">
           <i class="fas fa-fw fa-file-invoice"></i>
-          <span>Transaction Detail</span>
+          <span>Transaction Details</span>
+        </a>
+      </li>
+
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+        Utilities
+      </div>
+
+      <li class="nav-item">
+        <a class="nav-link" href="/users">
+          <i class="fas fa-fw fa-user-astronaut"></i>
+          <span>Users</span>
         </a>
       </li>
 
