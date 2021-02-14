@@ -15,15 +15,16 @@ class TransactionDetails extends BaseController
   public function show($id)
   {
     $transactionDetail = $this->transactionDetail->getOne($id);
-    return view('transactiondetails/show', ['transaction' => $transactionDetail]);
+    return view('transactiondetails/show', ['transactionDetail' => $transactionDetail]);
   }
 
   function add()
   {
     $suppliers = $this->supplier->asObject()->findAll();
+    $transactions = $this->transaction->asObject()->findAll();
     $drugs = $this->drug->asObject()->findAll();
 
-    return view('transactiondetails/add', ['suppliers' => $suppliers, 'drugs' => $drugs, 'validation' => Services::validation()]);
+    return view('transactiondetails/add', ['suppliers' => $suppliers, 'drugs' => $drugs, 'transactions' => $transactions, 'validation' => Services::validation()]);
   }
 
   function insert()
@@ -43,7 +44,7 @@ class TransactionDetails extends BaseController
     $sub_total = intval($this->request->getPost('sub_total'));
     $total = intval($this->request->getPost('total'));
 
-    $result = $this->transaction->insert([
+    $result = $this->transactionDetail->insert([
       'transaction_id' => $transaction_id,
       'drug_id' => $drug_id,
       'sub_total' => $sub_total,
@@ -63,7 +64,7 @@ class TransactionDetails extends BaseController
   {
     $transactions = $this->transaction->asObject()->findAll();
     $drugs = $this->drug->asObject()->findAll();
-    $transactionDetail = $this->transactionDetail->asObject()->find(intval($id));
+    $transactionDetail = $this->transactionDetail->getOne(intval($id));
 
     return view('transactiondetails/edit', [
       'transactions' => $transactions,
@@ -96,6 +97,11 @@ class TransactionDetails extends BaseController
       'sub_total' => $sub_total,
       'total' => $total,
     ];
+
+    // $a = $this->transactionDetail->update(intval($id), $newTransactionDetail);
+    // var_dump($a);
+    // die();
+
 
     if ($this->transactionDetail->update(intval($id), $newTransactionDetail)) {
       session()->setFlashdata('message', 'Transaction detail updated successfully!');

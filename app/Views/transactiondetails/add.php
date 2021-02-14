@@ -8,27 +8,40 @@
     </h1>
   </div>
   <div class="my-4 col-md-6">
-    <form action="/transactions/insert" method="post">
+    <form action="/transactiondetails/insert" method="post">
       <?= csrf_field() ?>
       <div class="form-group">
-        <label class="form-label">User</label>
-        <select <?= old('user_id') ?> name="user_id" class="form-control <?= $validation->hasError('user_id') ? 'is-invalid' : '' ?>">
-          <?php foreach ($users as $user) : ?>
-            <option value="<?= $user->id; ?>"><?= $user->username; ?></option>
+        <label class="form-label">Transaction</label>
+        <select <?= old('transaction_id') ?> name="transaction_id" class="form-control <?= $validation->hasError('transaction_id') ? 'is-invalid' : '' ?>">
+          <?php foreach ($transactions as $transaction) : ?>
+            <option value="<?= $transaction->id; ?>"><?= $transaction->id; ?></option>
           <?php endforeach; ?>
         </select>
-        <?php if ($validation->hasError('user_id')) : ?>
+        <?php if ($validation->hasError('transaction_id')) : ?>
           <div class="invalid-feedback">
-            <?= $validation->getError('user_id') ?>
+            <?= $validation->getError('transaction_id') ?>
           </div>
         <?php endif ?>
       </div>
       <div class="mt-3 form-group">
-        <label class="form-label">Customer Name</label>
-        <input value="<?= old('customer_name') ?>" name="customer_name" class="form-control <?= $validation->hasError('customer_name') ? 'is-invalid' : '' ?>" required>
-        <?php if ($validation->hasError('customer_name')) : ?>
+        <label class="form-label">Drug</label>
+        <select <?= old('drug_id') ?> name="drug_id" class="form-control <?= $validation->hasError('drug_id') ? 'is-invalid' : '' ?>">
+          <?php foreach ($drugs as $drug) : ?>
+            <option value="<?= $drug->id; ?>"><?= $drug->name; ?></option>
+          <?php endforeach; ?>
+        </select>
+        <?php if ($validation->hasError('drug_id')) : ?>
           <div class="invalid-feedback">
-            <?= $validation->getError('customer_name') ?>
+            <?= $validation->getError('drug_id') ?>
+          </div>
+        <?php endif ?>
+      </div>
+      <div class="mt-3 form-group">
+        <label class="form-label">Subtotal</label>
+        <input value="<?= old('sub_total') ?>" type="number" name="sub_total" class="form-control <?= $validation->hasError('sub_total') ? 'is-invalid' : '' ?>" required>
+        <?php if ($validation->hasError('sub_total')) : ?>
+          <div class="invalid-feedback">
+            <?= $validation->getError('sub_total') ?>
           </div>
         <?php endif ?>
       </div>
@@ -41,16 +54,7 @@
           </div>
         <?php endif ?>
       </div>
-      <div class="mt-3 form-group">
-        <label class="form-label">Datetime</label>
-        <input value="<?= old('datetime') ?>" type="datetime-local" name="datetime" class="form-control <?= $validation->hasError('datetime') ? 'is-invalid' : '' ?>" required>
-        <?php if ($validation->hasError('datetime')) : ?>
-          <div class="invalid-feedback">
-            <?= $validation->getError('datetime') ?>
-          </div>
-        <?php endif ?>
-      </div>
-      <a href="/transactions" class="mt-4 btn btn-secondary">Back</a>
+      <a href="/transactiondetails" class="mt-4 btn btn-secondary">Back</a>
       <button type="submit" class="mt-4 btn btn-primary">Submit</button>
     </form>
   </div>

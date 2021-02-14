@@ -50,7 +50,7 @@
           </div>
         <?php endif ?>
       </div>
-      <a href="/drugs" class="mt-4 btn btn-secondary">Back</a>
+      <a href="/transactions" class="mt-4 btn btn-secondary">Back</a>
       <button type="submit" class="mt-4 btn btn-primary">Submit</button>
     </form>
   </div>
