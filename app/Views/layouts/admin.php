@@ -77,7 +77,7 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="/transaction-details">
+        <a class="nav-link" href="/transactiondetails">
           <i class="fas fa-fw fa-file-invoice"></i>
           <span>Transaction Details</span>
         </a>

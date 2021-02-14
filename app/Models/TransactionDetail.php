@@ -39,4 +39,22 @@ class TransactionDetail extends Model
 	protected $afterFind            = [];
 	protected $beforeDelete         = [];
 	protected $afterDelete          = [];
+
+  function getAll()
+  {
+    $this->select('*');
+    // $this->select('drugs.id, drugs.price as drug_price, drugs.quantity as drug_quantity, drugs.producer as drug_producer');
+    $this->select('transactions.id as transaction_id');
+    $this->select('drugs.id as drug_id');
+    $this->select('drugs.name as drug_name');
+    // $this->select('suppliers.id as supplier_id');
+    // $this->select('suppliers.name as supplier_name');
+    $this->join('transactions', 'transactions.id = transaction_details.transaction_id');
+    $this->join('drugs', 'drugs.id = transaction_details.drug_id');
+    return $this->get()->getResult();
+  }
+
+  function getOne($id) {
+    return [];
+  }
 }

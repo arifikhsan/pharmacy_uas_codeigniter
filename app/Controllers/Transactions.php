@@ -118,9 +118,9 @@ class Transactions extends BaseController
   function destroy($id)
   {
     if ($this->transaction->delete(intval($id))) {
-      session()->setFlashdata('message', 'Supplier deleted successfully!');
+      session()->setFlashdata('message', 'Transaction deleted successfully!');
     } else {
-      session()->setFlashdata('message', 'Delete supplier failed!');
+      session()->setFlashdata('message', 'Delete transaction failed!');
     }
 
     return redirect()->to('/transactions');

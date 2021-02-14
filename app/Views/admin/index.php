@@ -65,7 +65,7 @@
       </div>
     </a>
 
-    <a href="/transaction-details" class="mb-4 col-xl-3 col-md-6">
+    <a href="/transactiondetails" class="mb-4 col-xl-3 col-md-6">
       <div class="py-2 shadow card border-left-warning h-100">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
