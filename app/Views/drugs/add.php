@@ -8,7 +8,7 @@
     </h1>
   </div>
   <div class="my-4 col-md-6">
-    <form action="/drugs/insert" method="post">
+    <form enctype="multipart/form-data" action="/drugs/insert" method="post">
       <?= csrf_field() ?>
       <div class="form-group">
         <label class="form-label">Supplier</label>
@@ -56,6 +56,15 @@
         <?php if ($validation->hasError('quantity')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('quantity') ?>
+          </div>
+        <?php endif ?>
+      </div>
+      <div class="mt-3 form-group">
+        <label class="form-label">Image</label>
+        <input value="<?= old('drug_image') ?>" type="file" name="drug_image" class="form-control <?= $validation->hasError('drug_image') ? 'is-invalid' : '' ?>" required>
+        <?php if ($validation->hasError('drug_image')) : ?>
+          <div class="invalid-feedback">
+            <?= $validation->getError('drug_image') ?>
           </div>
         <?php endif ?>
       </div>

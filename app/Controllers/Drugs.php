@@ -33,6 +33,7 @@ class Drugs extends BaseController
       'producer' => 'trim|required',
       'price' => 'numeric|trim|required',
       'quantity' => 'numeric|trim|required',
+      'drug_image' => 'required'
     ])) {
       $validation = Services::validation();
       return redirect()->to('/drugs/add')->withInput('validation', $validation);
@@ -43,15 +44,23 @@ class Drugs extends BaseController
     $producer = $this->request->getPost('producer');
     $price = intval($this->request->getPost('price'));
     $quantity = intval($this->request->getPost('quantity'));
-    $image = 1;
+    $image = $this->request->getFile('drug_image');
 
-    $result = $this->drug->insert([
-      'supplier_id' => $supplier_id,
-      'name' => $name,
-      'producer' => $producer,
-      'price' => $price,
-      'quantity' => $quantity,
-    ]);
+    dd($this->request->getFiles());
+
+    if ($image->isValid() && !$image->hasMoved()) {
+
+      $result = $this->drug->insert([
+        'supplier_id' => $supplier_id,
+        'name' => $name,
+        'producer' => $producer,
+        'price' => $price,
+        'quantity' => $quantity,
+        'image' => $image->getName(),
+      ]);
+
+      $image->move(ROOTPATH . 'public/uploads');
+    }
 
     if ($result) {
       session()->setFlashdata('message', 'Drug created successfully!');
