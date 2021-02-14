@@ -4,13 +4,13 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\User;
+use Config\Services;
 
 class Users extends BaseController
 {
   public function index()
   {
-    $user = new User();
-    $users = $user->asObject()->findAll();
+    $users = $this->user->asObject()->findAll();
 
     return view('users/index', ['users' => $users]);
   }
@@ -18,23 +18,30 @@ class Users extends BaseController
   public function show($id)
   {
     $user = new User();
-    $user = $user->asObject()->find($id);
+    $user = $this->user->asObject()->find($id);
 
     return view('users/show', ['user' => $user]);
   }
 
   function add()
   {
-    return view('users/add');
+    return view('users/add', ['validation' => Services::validation()]);
   }
 
   function insert()
   {
+    if (!$this->validate([
+      'username' => 'alpha_numeric|min_length[4]|trim|required',
+      'password' => 'min_length[4]|trim|required'
+    ])) {
+      $validation = Services::validation();
+      return redirect()->to('/users/add')->withInput('validation', $validation);
+    };
+
     $username = $this->request->getPost('username');
     $password = $this->request->getPost('password');
 
-    $user = new User();
-    $user->insert([
+    $this->user->insert([
       'username' => $username,
       'password' => md5($password),
     ]);
@@ -45,35 +52,51 @@ class Users extends BaseController
 
   function edit($id)
   {
-    $user = new User();
-    $user = $user->asObject()->find(intval($id));
-
-    return view('users/edit', ['user' => $user]);
+    $user = $this->user->asObject()->find(intval($id));
+    return view('users/edit', ['user' => $user, 'validation' => Services::validation()]);
   }
 
   function update($id)
   {
+    if (!$this->validate([
+      'username' => 'alpha_numeric|min_length[4]|trim|required',
+      'password' => 'min_length[4]|trim|required'
+    ])) {
+      $validation = Services::validation();
+      return redirect()->to('/users/edit/' . $id)->withInput('validation', $validation);
+    };
+
     $username = $this->request->getPost('username');
     $password = $this->request->getPost('password');
 
     $newUser = [
-      'name' => $username,
-      'address' => md5($password),
+      'username' => $username,
+      'password' => md5($password),
     ];
 
-    $user = new User();
-    $user = $user->update(intval($id), $newUser);
+    if ($this->user->update(intval($id), $newUser)) {
+      session()->setFlashdata('message', 'User updated successfully!');
+    } else {
+      session()->setFlashdata('message', 'Update user failed!');
+    }
 
-    session()->setFlashdata('message', 'User updated successfully!');
     return redirect()->to('/users');
   }
 
   function delete($id)
   {
-    $user = new User();
-    $user->delete(intval($id));
+    $user = $this->user->asObject()->find(intval($id));
+    return view('users/delete', ['user' => $user]);
+  }
 
-    session()->setFlashdata('message', 'User deleted successfully!');
+  function destroy($id)
+  {
+    if ($this->user->delete(intval($id))) {
+      session()->setFlashdata('message', 'User deleted successfully!');
+    } else {
+      session()->setFlashdata('message', 'Delete user failed!');
+    }
+
     return redirect()->to('/users');
   }
 }

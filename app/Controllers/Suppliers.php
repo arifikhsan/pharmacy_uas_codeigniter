@@ -95,6 +95,12 @@ class Suppliers extends BaseController
 
   function delete($id)
   {
+    $supplier = $this->supplier->asObject()->find(intval($id));
+    return view('suppliers/delete', ['supplier' => $supplier]);
+  }
+
+  function destroy($id)
+  {
     if ($this->supplier->delete(intval($id))) {
       session()->setFlashdata('message', 'Supplier deleted successfully!');
     } else {
