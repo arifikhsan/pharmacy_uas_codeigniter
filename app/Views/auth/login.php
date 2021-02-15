@@ -14,7 +14,7 @@
           <div class="col-lg-6">
             <div class="" style="padding: 10rem 3rem 10rem 3rem">
               <div class="text-center">
-                <h1 class="mb-4 text-gray-900 h4">Login</h1>
+                <h1 class="mb-4 text-gray-900 h4">Masuk menuju Sistem Informasi Apotek</h1>
               </div>
               <?php if (session()->getFlashdata('error')) : ?>
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
