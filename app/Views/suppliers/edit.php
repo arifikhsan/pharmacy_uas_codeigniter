@@ -30,7 +30,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Address</label>
-        <textarea name="address" class="form-control <?= $validation->hasError('address') ? 'is-invalid' : '' ?>" required><?= $supplier->address ?></textarea>
+        <textarea name="address" class="form-control <?= $validation->hasError('address') ? 'is-invalid' : '' ?>"><?= $supplier->address ?></textarea>
         <?php if ($validation->hasError('address')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('address') ?>

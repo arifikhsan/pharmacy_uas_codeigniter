@@ -25,7 +25,7 @@
       </div>
       <div class="form-group">
         <label class="form-label">Name</label>
-        <input value="<?= $drug->name ?>" type="text" name="name" class="form-control <?= $validation->hasError('name') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= $drug->name ?>" type="text" name="name" class="form-control <?= $validation->hasError('name') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('name')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('name') ?>
@@ -34,7 +34,7 @@
       </div>
       <div class="form-group">
         <label class="form-label">Producer</label>
-        <input value="<?= $drug->producer ?>" type="text" name="producer" class="form-control <?= $validation->hasError('producer') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= $drug->producer ?>" type="text" name="producer" class="form-control <?= $validation->hasError('producer') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('producer')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('producer') ?>
@@ -43,7 +43,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Price</label>
-        <input value="<?= $drug->price ?>" type="number" name="price" class="form-control <?= $validation->hasError('price') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= $drug->price ?>" type="number" name="price" class="form-control <?= $validation->hasError('price') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('price')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('price') ?>
@@ -52,7 +52,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Quantity</label>
-        <input value="<?= $drug->quantity ?>" type="number" name="quantity" class="form-control <?= $validation->hasError('quantity') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= $drug->quantity ?>" type="number" name="quantity" class="form-control <?= $validation->hasError('quantity') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('quantity')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('quantity') ?>

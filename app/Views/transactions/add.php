@@ -25,7 +25,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Customer Name</label>
-        <input value="<?= old('customer_name') ?>" name="customer_name" class="form-control <?= $validation->hasError('customer_name') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('customer_name') ?>" name="customer_name" class="form-control <?= $validation->hasError('customer_name') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('customer_name')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('customer_name') ?>
@@ -34,7 +34,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Total</label>
-        <input value="<?= old('total') ?>" type="number" name="total" class="form-control <?= $validation->hasError('total') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('total') ?>" type="number" name="total" class="form-control <?= $validation->hasError('total') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('total')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('total') ?>
@@ -43,7 +43,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Datetime</label>
-        <input value="<?= old('datetime') ?>" type="datetime-local" name="datetime" class="form-control <?= $validation->hasError('datetime') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('datetime') ?>" type="datetime-local" name="datetime" class="form-control <?= $validation->hasError('datetime') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('datetime')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('datetime') ?>
