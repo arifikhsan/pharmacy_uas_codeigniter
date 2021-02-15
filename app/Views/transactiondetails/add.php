@@ -38,7 +38,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Subtotal</label>
-        <input value="<?= old('sub_total') ?>" type="number" name="sub_total" class="form-control <?= $validation->hasError('sub_total') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('sub_total') ?>" type="number" name="sub_total" class="form-control <?= $validation->hasError('sub_total') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('sub_total')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('sub_total') ?>
@@ -47,7 +47,7 @@
       </div>
       <div class="mt-3 form-group">
         <label class="form-label">Total</label>
-        <input value="<?= old('total') ?>" type="number" name="total" class="form-control <?= $validation->hasError('total') ? 'is-invalid' : '' ?>" required>
+        <input value="<?= old('total') ?>" type="number" name="total" class="form-control <?= $validation->hasError('total') ? 'is-invalid' : '' ?>">
         <?php if ($validation->hasError('total')) : ?>
           <div class="invalid-feedback">
             <?= $validation->getError('total') ?>

@@ -32,8 +32,7 @@ class Suppliers extends BaseController
       'address' => 'trim|required',
       'phone_number' => 'min_length[4]|trim|required',
     ])) {
-      $validation = Services::validation();
-      return redirect()->to('/suppliers/add')->withInput('validation', $validation);
+      return redirect()->to('/suppliers/add')->withInput();
     };
 
     $name = $this->request->getPost('name');
@@ -71,8 +70,7 @@ class Suppliers extends BaseController
       'address' => 'trim|required',
       'phone_number' => 'min_length[4]|trim|required',
     ])) {
-      $validation = Services::validation();
-      return redirect()->to('/suppliers/edit/' . $id)->withInput('validation', $validation);
+      return redirect()->to('/suppliers/edit/' . $id)->withInput();
     };
 
     $newSupplier = [

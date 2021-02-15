@@ -82,8 +82,7 @@ class TransactionDetails extends BaseController
       'sub_total' => 'numeric|required',
       'total' => 'numeric|required',
     ])) {
-      $validation = Services::validation();
-      return redirect()->to('/transactiondetails/edit/' . $id)->withInput('validation', $validation);
+      return redirect()->to('/transactiondetails/edit/' . $id)->withInput();
     };
 
     $transaction_id = intval($this->request->getPost('transaction_id'));
@@ -97,11 +96,6 @@ class TransactionDetails extends BaseController
       'sub_total' => $sub_total,
       'total' => $total,
     ];
-
-    // $a = $this->transactionDetail->update(intval($id), $newTransactionDetail);
-    // var_dump($a);
-    // die();
-
 
     if ($this->transactionDetail->update(intval($id), $newTransactionDetail)) {
       session()->setFlashdata('message', 'Transaction detail updated successfully!');
