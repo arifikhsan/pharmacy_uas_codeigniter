@@ -109,7 +109,6 @@ class Drugs extends BaseController
       // 'image' => $image->getName(),
     ];
 
-
     if (!empty($_FILES["image"]["name"])) {
       $image = $this->request->getFile('image');
       $newDrug['image'] = $image->getName();
