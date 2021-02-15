@@ -40,7 +40,7 @@ class Transactions extends BaseController
     };
 
     $user_id = intval($this->request->getPost('user_id'));
-    $customer_name = intval($this->request->getPost('customer_name'));
+    $customer_name = $this->request->getPost('customer_name');
     $total = intval($this->request->getPost('total'));
     $datetime = $this->request->getPost('datetime');
 

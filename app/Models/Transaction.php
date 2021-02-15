@@ -54,8 +54,11 @@ class Transaction extends Model
   {
     $this->select('*');
     $this->select('users.username as user_username');
+    $this->select('transactions.id as id');
+    $this->select('transactions.total as total');
     $this->select('transactions.customer_name as customer_name');
     $this->join('users', 'users.id = transactions.user_id');
+    $this->where('transactions.id', $id);
     return $this->get()->getResult()[0];
   }
 }
