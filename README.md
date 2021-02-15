@@ -18,9 +18,9 @@ Dibuat untuk tugas UAS.
 composer update
 ```
 
-2. Salin file `development.env` menjadi `.env`.
-3. Buat database mysql dengan nama `codeigniter_pharmacy`.
-4. Jika username dan password database bukan `root` dan `""` (kosong), sesuaikan pengaturan di `app/config/Database.php`.
+3. Salin file `development.env` menjadi `.env`.
+4. Buat database mysql dengan nama `codeigniter_pharmacy`.
+5. Jika username dan password database bukan `root` dan `""` (kosong), sesuaikan pengaturan di `app/config/Database.php`.
 
 ## Cara menjalankan
 
