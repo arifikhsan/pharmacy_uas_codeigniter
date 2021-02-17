@@ -43,3 +43,5 @@ php spark serve
 ```
 
 4. Kunjungi http://localhost:8080/.
+
+5. Login dengan username `admin` dan password `admin123*()`.
